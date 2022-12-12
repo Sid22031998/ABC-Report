@@ -40,23 +40,36 @@ def modelTrain():
 	# testing
 	dt_clf_gini.fit(X_train, y_train)
 	y_pred_gini = dt_clf_gini.predict(X_test)
-	print(y_pred_gini)
+	# print(y_pred_gini)
 	return dt_clf_gini
-
 
 def ValuePredictor(to_predict_list):
     to_predict = np.array(to_predict_list).reshape(1, 9)
-    loaded_model=modelTrain()
-    print(to_predict)
+    # print(to_predict)
     result = loaded_model.predict(to_predict)
     return result[0]
 
+
 app=Flask(__name__, template_folder='../templates')
 
-# render form
+loaded_model=modelTrain()
+
+# routes
+# homepage
 @app.route('/')
 def index():
-	return render_template("index.html")
+	return render_template("homepage.html")
+
+# api to fetch all data
+@app.route('/data')
+def viewData():
+	df = pd.read_excel('dataset.xlsx')
+	return render_template('data.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
+
+# api to take input and apply model (ML)
+@app.route('/form')
+def formInput():
+	return render_template("formInput.html")
 
 # api to calculate result
 @app.route('/result', methods = ['POST'])
