@@ -4,6 +4,8 @@ from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
+from flask import json
+from werkzeug.exceptions import HTTPException
 
 from flask import Flask, request, render_template
  
@@ -80,5 +82,17 @@ def result():
         to_predict_list = list(map(int, to_predict_list))
         result = ValuePredictor(to_predict_list)                 
         return render_template("result.html", prediction = result)
+
+@app.errorhandler(HTTPException)
+def handle_exception(e):
+    response = e.get_response()
+    # replace the body with JSON
+    response.data = json.dumps({
+        "code": e.code,
+        "name": e.name,
+        "description": e.description,
+    })
+    response.content_type = "application/json"
+    return response
 
 app.run()
