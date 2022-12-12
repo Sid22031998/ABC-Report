@@ -1,0 +1,58 @@
+<html>
+<body>
+	<h3>IRR Prediction Form</h3>
+
+<div>
+<form action="/result" method="POST">
+	<label for="area">Area</label>
+	<select id="area" name="area">
+	<option value="1">Delhi</option>
+	<option value="2">Kolkata</option>
+	<option value="3">Mumbai</option>
+	<option value="0">Chennai</option>
+	</select>
+	<br>
+	<label for="climatic_condition">Climatic Condition</label>
+	<select id="climatic_condition" name="climatic_condition">
+	<option value="1">sunny</option>
+	<option value="0">rainy</option>
+	<option value="2">winter</option>
+	</select>
+	<br>
+	<label for="agriculture_products">Agriculture Products</label>
+	<select id="agriculture_products" name="agriculture_products">
+	<option value="2">wheat</option>
+	<option value="1">rice</option>
+	<option value="0">barley</option>
+	</select>
+	<br>
+	<label for="popular_cuisines">Popular Cuisines</label>
+	<select id="popular_cuisines" name="popular_cuisines">
+	<option value="0">Afghani</option>
+	<option value="1">BBQ</option>
+	<option value="2">Continental</option>
+	</select>
+	<br>
+	<label for="land_cost">Land Cost </label>
+	<input type="text" id="land_cost" name="land_cost">btw:[0-99999]
+	<br>
+	<label for="total_population">Total Population</label>
+	<input type="text" id="total_population" name="total_population">btw:[0-99999]
+	<br>
+	<label for="gender">Gender</label>
+	<select id="gender" name="gender">
+	<option value="1">Male</option>
+	<option value="0">Female</option>
+	</select>
+	<br>
+	<label for="ratio_of_working_professional">Ratio of Working Professional</label>
+	<input type="text" id="ratio_of_working_professional" name="ratio_of_working_professional">btw:[0-99]
+	<br>
+	<label for="kids_ratio">Kids Ratio</label>
+	<input type="text" id="kids_ratio" name="kids_ratio">btw:[0-99]
+	<br>
+	<input type="submit" value="Submit">
+</form>
+</div>
+</body>
+</html>
