@@ -3,7 +3,6 @@
 clone repository<br>
 run: python scripts/script.js
 
-<br><br>
 CRUD Operations:<br>
 @app.route('/')  --  homepage <br>
 @app.route('/data')  --  api to get all data from dataset<br>
